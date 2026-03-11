@@ -1,8 +1,13 @@
 const express = require('express')
 const upload = require('./upload')
+const fs = require('fs')
 
 const app = express()
 const port = process.env.PORT || 3000
+
+if(!fs.existsSync('uploads')){
+    fs.mkdirSync('uploads')
+}
 
 app.use('/upload', express.static('uploads'))
 
